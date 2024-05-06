@@ -9,8 +9,8 @@
 
 boolean flagCANInit = false;   // If false indicates that the CAN module was not initialized successfully
 boolean led_flag = false;
-state_t state = IDLE_ST;
-uint32_t initialTime = 0;
+int _id = 0; /* This variable is responsible to read the current ID in the buffer, 
+              * if already exist an ID, wait for the timeout or CAN response */
 TaskHandle_t CANtask = NULL, BLEtask = NULL;
 
 /* State Machine Functions */
@@ -20,6 +20,7 @@ void BLElog(void* arg);
 void setup()
 {    
   Serial.begin(9600);
+  vTaskDelay(1000); // delay to avoid the bug in the serialprint when you use the monitor serial to reset the module
   Serial.println("INICIANDO ALIVE.");
   
   pinMode(LED_BUILTIN, OUTPUT);
@@ -49,14 +50,16 @@ void loop() { reset_rtc_wdt(); /* Reset the wathdog timer */ }
 
 void logCAN(void* arg)
 {
+  uint32_t initialTime = 0;
+
   while(1)
   {
     if(flagCANInit)
     {
-      state = CircularBuffer_state();
+      _id = CircularBuffer_state();
 
       initialTime = millis();    
-      while(!checkReceive() && state!=IDLE_ST)
+      while(!checkReceive() && _id!=0)
       {
         if(millis() - initialTime >= 4000) break;
         vTaskDelay(1);
