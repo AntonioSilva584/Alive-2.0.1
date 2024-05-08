@@ -74,9 +74,9 @@
 #define AmbientAirTemperature                            0x46           
 #define AbsoluteThrottlePositionB                        0x47               
 #define AbsoluteThrottlePositionC                        0x48               
-#define AcceleratorPedalD                                0x49       
-#define AcceleratorPedalE                                0x4A       
-#define AcceleratorPedalF                                0x4B       
+#define AcceleratorPedalPositionD                                0x49       
+#define AcceleratorPedalPositionE                                0x4A       
+#define AcceleratorPedalPositionF                                0x4B       
 #define CommandedThrottleActuator                        0x4C               
 #define TimeRun_MIL                                      0x4D
 #define TimeSinceTroubleCodesCleared                     0x4E                   

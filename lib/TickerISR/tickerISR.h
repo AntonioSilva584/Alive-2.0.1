@@ -8,8 +8,15 @@
 
 void setup_ticker(void);
 bool checkPID(void);
-void PIDs_1hz(void);
-void PIDs_10hz(void);
-void PIDs_20hz(void);
+void PIDs_01sec(void);
+void PIDs_05sec(void);
+void PIDs_1sec(void);
+void PIDs_5sec(void);
+void PIDs_10sec(void);
+void PIDs_30sec(void);
+void PIDs_1min(void);
+void PIDs_5min(void);
+
+void tickerONCE(void);
 
 #endif
