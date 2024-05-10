@@ -89,7 +89,7 @@ void MsgRec_Treatment(unsigned char* info_can, int length)
       if(debug_mode) Serial.printf("FuelPressure:   %f\r\n", res);
    }
 
-   else if(info_can[2]==AbsolutePressure)
+   else if(info_can[2]==IntakeManifoldAbsolutePressure)
    {
       float A = info_can[3];        
       float res = A;
@@ -259,14 +259,14 @@ void MsgRec_Treatment(unsigned char* info_can, int length)
       Serial.printf("%d %d %d %d\r\n", info_can[3], info_can[4], info_can[5], info_can[6]);
    }
 
-   else if(info_can[2]==RunTime)
+   else if(info_can[2]==RunTimeSinceEngineStart)
    {
       float A = info_can[3], B = info_can[4];        
       float res = (A*256)+B;
       if(debug_mode) Serial.printf("RunTime:   %f\r\n", res);
    }
 
-   else if(info_can[2]==DistanceTraveled)
+   else if(info_can[2]==DistanceTraveledMIL)
    {
       float A = info_can[3], B = info_can[4];
       float res = (A*256)+B;
@@ -537,21 +537,21 @@ void MsgRec_Treatment(unsigned char* info_can, int length)
       if(debug_mode) Serial.printf("AbsoluteThrottlePositionC:   %f\r\n", res);
    }
 
-   else if(info_can[2]==AcceleratorPedalD)
+   else if(info_can[2]==AcceleratorPedalPositionD)
    {
       float A = info_can[3];
       float res = (A*100)/255;
       if(debug_mode) Serial.printf("AcceleratorPedalD:   %f\r\n", res);
    }
 
-   else if(info_can[2]==AcceleratorPedalE)
+   else if(info_can[2]==AcceleratorPedalPositionE)
    {
       float A = info_can[3];
       float res = (A*100)/255;
       if(debug_mode) Serial.printf("AcceleratorPedalE:   %f\r\n", res);
    }
 
-   else if(info_can[2]==AcceleratorPedalF)
+   else if(info_can[2]==AcceleratorPedalPositionF)
    {
       float A = info_can[3];
       float res = (A*100)/255;
@@ -764,14 +764,14 @@ void MsgRec_Treatment(unsigned char* info_can, int length)
       if(debug_mode) Serial.printf("CommandedDiesel:   %f \r\n", res);
    }
 
-   else if(info_can[2]==ExhaustGas)
+   else if(info_can[2]==ExhaustGasRecircuilationTemperature)
    {
       float A = info_can[3];
       float res = A;
       if(debug_mode) Serial.printf("ExhaustGas:   %f \r\n", res);
    }
 
-   else if(info_can[2]==CommandedThrottleActuator2)
+   else if(info_can[2]==CommandedThrottleActuator2Position)
    {
       float A = info_can[3];
       float res = A;
@@ -792,7 +792,7 @@ void MsgRec_Treatment(unsigned char* info_can, int length)
       if(debug_mode) Serial.printf("InjectionPressureControl:   %f \r\n", res);
    }
 
-   else if(info_can[2]==TurboChargerCompressor)
+   else if(info_can[2]==TurboChargerCompressorPressure)
    {
       float A = info_can[3];
       float res = A;

@@ -17,6 +17,6 @@ void PIDs_30sec(void);
 void PIDs_1min(void);
 void PIDs_5min(void);
 
-void tickerONCE(void);
+void PIDs_once(void);
 
 #endif

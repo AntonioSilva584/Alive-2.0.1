@@ -35,7 +35,7 @@ bool checkPID()
 {
   // Flag to check if you received the PID support message
   bool check_receive_pid = false;
-  unsigned char Data[8] = {, , /*=ID*/, , , , , };
+  unsigned char Data[8] = {0x04, 0x01, 0x00/*=ID*/, 0x00, 0x00, 0x00, 0x00, 0x00};
 
   for(int i = 1; i < 5; i++)
   {
@@ -326,7 +326,7 @@ void PIDs_5sec()
 
 void PIDs_10sec(){
   insert(EngineCollantTemp);
-  insert(IntakeAirTemperature)
+  insert(IntakeAirTemperature);
 
   insert(CatalystTemperature_Bank1Sensor1);
   insert(CatalystTemperature_Bank2Sensor1);
@@ -396,7 +396,7 @@ void PIDs_5min(void){
   insert(EthanolFuel);
 
 }
-void tickerONCE(void){
+void PIDs_once(void){
   insert(FuelType);
   insert(HybridBatteryLife);
 }
